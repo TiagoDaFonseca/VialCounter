@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="Examples">
+    <file>ex1.png</file>
+    <file>ex2.png</file>
+  </qresource>
+  <qresource prefix="icons">
+    <file>ui.png</file>
+    <file>configuracoes.png</file>
+    <file>arquivos-e-pastas.png</file>
+    <file>foto.png</file>
+  </qresource>
+  <qresource prefix="Logos">
+    <file>hikma.png</file>
+  </qresource>
+</RCC>
