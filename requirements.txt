@@ -1,0 +1,12 @@
+certifi==2020.6.20
+fpdf2==2.0.5
+future==0.18.2
+imutils==0.5.3
+numpy==1.19.1
+opencv-python
+Pillow==6.2.2
+pymongo==3.11.0
+PyQt5==5.15.0
+PyQt5-sip==12.8.0
+pytesseract==0.3.5
+six==1.15.0
