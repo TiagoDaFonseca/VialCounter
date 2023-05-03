@@ -138,6 +138,9 @@ class AppController(QObject):
                         self.product += " " + text[w]
         self.vials_number = str(res["size"])
         # text output
+        if self.lot == None: self.lot="No label"
+        if self.tray == None: self.tray="No tray"
+        
         out_lot = "Lot: " + self.lot
         out = "Tray: " + self.tray + " | Vials#: " + self.vials_number
         self.app_signals.result_signal.emit({"lot_reading": out_lot,

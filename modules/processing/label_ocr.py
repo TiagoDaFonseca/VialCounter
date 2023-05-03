@@ -61,12 +61,13 @@ def show_image(window, img):
 def find_label(img):
     # find contours
     conts, hierarch = cv2.findContours(img, 1, 2)
-
+    
     for cont in conts:
         are = cv2.contourArea(cont)
         if are > 50000:
             r = cv2.minAreaRect(cont)
             break
+    
     return r
 
 
@@ -85,8 +86,14 @@ def set_roi(r, img):
 def read_label(img):
     # Pre-processing
     gray = get_grayscale(img)
+    cv2.imshow("a", gray)
+    cv2.waitKey(0)
     thresh = thresholding(gray)
+    cv2.imshow("b", thresh)
+    cv2.waitKey(0)
     op = opening(thresh)
+    cv2.imshow("f", op)
+    cv2.waitKey(0)
 
     # Label detection
     try:
@@ -96,12 +103,15 @@ def read_label(img):
         return None
     else:
         # rotate the label
-        angle = 90 - abs(rect[2])
+        angle = abs(rect[2])
         rotated = rotate_label(thresh, angle)
-
+        cv2.imshow("d", rotated)
+        cv2.waitKey(0)
         # determine new region of interest
         rect = find_label(rotated)
         roi = set_roi(rect, rotated)
+        cv2.imshow("e", roi)
+        cv2.waitKey(0)
     finally:
         # OCR
         return pytesseract.image_to_string(roi)
@@ -127,7 +137,7 @@ if __name__ == "__main__":
     print("Init")
 
     # Reads image
-    image = cv2.imread("/Users/tiagocunha/Documents/PycharmProjects/VialCounter/test/label1.jpeg")
+    image = cv2.imread("/Users/tiagocunha/Code/VialCounter/test/label1.jpeg")
 
     start = time.process_time()
 

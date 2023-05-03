@@ -3,7 +3,7 @@ import cv2
 from modules.sensors import webcamera as cam
 from modules.processing import vial_detection, label_ocr
 import numpy as np
-from modules.sensors import picamera
+#from modules.sensors import picamera
 
 
 class CameraManSignals(QObject):
@@ -97,7 +97,7 @@ class Inspector(QRunnable):
                 self.tray_size = 0
 
             # Label Info
-            if raw is not "":
+            if raw != "":
                 words = raw.split('\n')
                 self.info = label_ocr.clean_text(words)
             else:
@@ -106,6 +106,7 @@ class Inspector(QRunnable):
         finally:
             # put some signals
             ocr = label_ocr.bgr2rgb(self.lbl_img)
+            print(self.info)
             tray = self.tray_img
             res = {"label": ocr,
                    "text": self.info,  # list of tray info words
